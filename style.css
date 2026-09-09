@@ -1,0 +1,111 @@
+/* ==========================================
+   1. 전체 페이지 및 메인 컨테이너 중앙 정렬
+   ========================================== */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 전체 요소를 가로 중앙 정렬 */
+    justify-content: flex-start;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    background-color: #121212; /* 전체 배경색 (필요 시 수정 가능) */
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+/* ==========================================
+   입력 박스 영역 가운데 정렬 및 스타일
+   ========================================== */
+.inputbox {
+    /* 1. 박스 자체를 화면 가운데로 배치 */
+    margin: 0 auto 32px auto; 
+    
+    /* 2. 박스 내부의 text, input, button도 가운데 정렬 */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+
+    
+    /* 3. 입력 박스 디자인 */
+    background-color: #212121;
+    padding: 20px;
+    border-radius: 12px;
+    width: 300px;
+    gap: 10px;
+}
+
+/* 입력창 내부 input 요소 폭 설정 */
+.inputbox input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    box-sizing: border-box;
+}
+
+/* 입력창 내부 p 태그 텍스트 정렬 */
+.inputbox p {
+    margin: 0;
+    width: 100%;
+    text-align: left; /* title:, content: 글자는 왼쪽 정렬 */
+    font-weight: bold;
+}
+
+/* 버튼 스타일 */
+.inputbox button {
+    margin-top: 8px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* ==========================================
+   2. 노트 컨테이너 레이아웃 (한 행에 6~7개 배치)
+   ========================================== */
+#content, 
+#archiv_content, 
+#trash_content {
+    display: flex;
+    flex-wrap: wrap;        /* 요소가 넘치면 다음 줄로 이동 */
+    justify-content: center; /* 카드들을 가로 중앙 정렬 */
+    gap: 12px;              /* 카드 사이의 간격 */
+    width: 100%;
+    max-width: 1400px;      /* 6~7개가 들어갈 수 있는 전체 최대 너비 */
+    margin: 0 auto 40px auto;
+}
+
+/* ==========================================
+   3. 개별 노트 카드 너비 설정
+   ========================================== */
+/* 컨테이너 내부의 모든 노트 카드 (div) */
+#content > div,
+#archiv_content > div,
+#trash_content > div,
+.note {
+    /* 
+       calc(100% / 7 - 간격)을 이용해 한 줄에 정확히 6~7개가 들어가도록 너비를 계산합니다.
+       100% / 7 ≈ 14.28% 이므로 12px 간격을 고려하여 계산합니다.
+    */
+    width: calc(14.28% - 12px); 
+    min-width: 140px;            /* 너무 작아지지 않도록 최소 너비 지정 */
+    box-sizing: border-box;      /* 패딩과 테두리를 너비에 포함 */
+    background-color: #212121;
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* 카드 내부 버튼 스타일 정렬 */
+#content > div div,
+#archiv_content > div div,
+#trash_content > div div {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
